@@ -1,0 +1,13 @@
+
+{% for form in forms %}
+    <div class="for-group">
+        {{ form.label_tag }}
+        {{ form }}<br><br>
+        {% if form.errors %}
+            {{ form.errors }}
+        {% endif %}
+        <h4 style="color:#fff">{% if form.help_text %}</h4>
+        <small style="color:#fff">{{ form.help_text|safe }}</small>
+        {% endif %}
+    </div>
+{% endfor %}

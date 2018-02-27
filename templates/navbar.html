@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'post:list' %}" style="color:#fff" ><b>{{ posts.title }}</b></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'post:update' posts.id %}">​<span class="glyphicon glyphicon-pencil"></span>Düzenle</a></li>
+                <li class="drowdown">
+                  <a  href="#" data-toggle="dropdown" style="color:#f0f0f0"><i class="fa fa-user"></i>
+                        <span class="glyphicon glyphicon-eye-open"></span> {{ request.user.get_full_name }}<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{% url 'post:user_profile_edit' %}">​<span class="glyphicon glyphicon-cog"></span>Profil</a></li>
+                     <li class="divider"></li>
+                    <li><a href="{% url 'post:user_logout' %}">​<span class="glyphicon glyphicon-log-out"></span>Çıkış</a></li>
+                    {% else %}
+                    <li><a href="#kim"> Kim </a></li>
+                    <li><a href="#ne">Ne Yapar</a></li>
+                    <li><a href="#ilgialanlari">İlgi Alanları</a></li>
+                      <li class="drowdown">
+                      <a  href="#" data-toggle="dropdown"><i class="fa fa-user"></i>
+                          <span class="glyphicon glyphicon-th-list"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{% url 'post:user_login' %}">​<span class="glyphicon glyphicon-log-in"></span>Giriş</a></li>
+                         <li class="divider"></li>
+                        <li><a href="{% url 'post:user_register' %}">​<span class="glyphicon glyphicon-user"></span>Kayıt</a></li>
+                     </ul>
+                  </ul>
+                {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</nav>

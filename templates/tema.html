@@ -1,0 +1,55 @@
+
+{% include 'navbar.html' %}
+<!-- First Container -->
+
+
+<div id="kim" class="container-fluid bg-1 text-center">
+  <h3 class="margin">Kimdir ?</h3>
+    {% if posts.image1 %}
+      <img src="{{ posts.image1.url }}" class="img-responsive img-circle margin" style="display:inline" alt="profil" width="350" height="350">
+    {% endif %}
+    <h3>
+        <b>{{ posts.title }}</b><br><br>
+        {{ posts.who }}
+  </h3>
+</div>
+
+<!-- Second Container -->
+<div id="ne" class="container-fluid bg-2 text-center">
+  <h3 class="margin">Ne Mi Yapar ?</h3>
+  <h3>{{ posts.what_to_do }}</h3><br>
+  {% if not request.user.is_authenticated %}
+    <a href="#" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-search"></span> Search
+  </a>
+  {% endif %}
+
+</div>
+
+<!-- Third Container (Grid) -->
+<div id="ilgialanlari" class="container-fluid bg-3 text-center">
+  <h3 class="margin">İlgi Alanları</h3><br>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <p>{{ posts.interested_1 }}</p>
+      <img src="{{ posts.img1.url }}" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4">
+      <p>{{ posts.interested_2 }}</p>
+      <img src="{{ posts.img2.url }}" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4">
+      <p>{{ posts.interested_3 }}</p>
+      <img src="{{ posts.img3.url }}" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>Every thing for learning Django </p>
+  <small>This template designed by w3school</small>
+</footer>
+
+
